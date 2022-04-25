@@ -33,6 +33,8 @@ app.use(require("express-session")({
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//passport initalization and sessions
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -61,7 +63,7 @@ passport.deserializeUser(UserSchema.deserializeUser())
 
 const LocalStrategy = require('passport-local').Strategy
 
-//customize your own startegy/logic
+//customize your own startegy/logic only on passport-local not on passport local mongoose
 passport.use(new LocalStrategy(UserSchema.authenticate()))
 
 module.exports = app;
