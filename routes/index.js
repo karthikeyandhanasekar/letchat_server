@@ -19,7 +19,7 @@ router.post('/userregister', async (req, res, next) => {
         console.log(err.message);
       else
         res.json({
-          message: "Success"
+          status: true
         })
     })
 
@@ -38,14 +38,17 @@ router.post('/userlogin', async (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
       if (err)
         console.log(err.message);
-      if (!user) res.send(info.message);
+      if (!user) res.json({
+        message: info.message,
+        status: false
+      })
       else //logIn into their user
         req.logIn(user, (err) => {
           if (err)
             console.log(error.message);
           else
             res.json({
-              message: "Success"
+              status: true
             })
         })
 
