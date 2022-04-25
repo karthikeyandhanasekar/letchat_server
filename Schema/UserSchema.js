@@ -9,6 +9,7 @@ const userschema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
 })
 
-userschema.plugin(passportlocalmongoose)
+//here usernameField is help to customize the username to email/customs based on specific field
+userschema.plugin(passportlocalmongoose, { usernameField: 'email' })
 
 module.exports = mongoose.model("users", userschema)

@@ -60,6 +60,8 @@ passport.deserializeUser(UserSchema.deserializeUser())
 
 
 const LocalStrategy = require('passport-local').Strategy
+
+//customize your own startegy/logic
 passport.use(new LocalStrategy(UserSchema.authenticate()))
 
 module.exports = app;
